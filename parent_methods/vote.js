@@ -103,7 +103,7 @@ function upvote(id,bot,json){
 exports.setManager = function(manageri){
 	manager = manageri;
 	con = global.con();
-	app.listen(3001,() => {
+	app.listen(3001, "0.0.0.0", () => {
 		console.log("\x1b[33m","Voting is listening on port 3001!");
 	});
 }
