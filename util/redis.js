@@ -1,5 +1,7 @@
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient({
+	host: 'redis'
+});
 
 exports.incr = function(key,value=1){
 	return new Promise(function(res,rej){
