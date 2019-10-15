@@ -1,22 +1,13 @@
-version: "2"
+version: "3.2"
 
 services:
 
-
-    bot:
+    application:
         build: .
-        environment: 
-            BOT_TOKEN: ${DISCORD_OWO_TOKEN} 
-            ADMIN_USERNAME: ${DISCORD_OWO_ADMIN}
-            MYSQL_USERNAME: "root"
-            NODE_ENV: "production"
         ports: 
             - "3001:3001"
         depends_on: 
             - redis
-        links: 
-            - redis
-
+            
     redis:
         image: redis
-        restart: always
