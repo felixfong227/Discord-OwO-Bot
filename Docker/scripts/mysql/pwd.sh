@@ -1,1 +1,0 @@
-export MYSQL_PASSWORD="${openssl rand -base64 32}"
