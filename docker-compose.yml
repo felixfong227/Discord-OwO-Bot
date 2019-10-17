@@ -1,13 +1,25 @@
-version: "3.2"
+version: "3"
 
 services:
 
-    application:
-        build: .
-        ports: 
-            - "3001:3001"
-        depends_on: 
+    bot:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args: 
+                MYSQL_USERNAME: "root"
+                MYSQL_PASSWORD: "root"
+                BOT_TOKEN: ${DISCORD_OWO_TOKEN}
+                ADMIN_USERNAME: ${DISCORD_OWO_ADMIN}
+                NODE_ENV: "production"
+        ports:
+            - "3001:3001" 
+        depends_on:
             - redis
-            
+            - mysql
+
     redis:
-        image: redis
+        image: redis:5.0.6-alpine
+    
+    mysql:
+        build: ./Docker/mysql
